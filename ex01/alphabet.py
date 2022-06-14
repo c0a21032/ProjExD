@@ -1,16 +1,21 @@
 import random
+import datetime
 
 num_let = 8
 num_mis = 2
 repeat = 3
 
 def main():
+    st = datetime.datetime.now()
     for i in range(repeat):
         seikai = shutsudai()
         result = kaitou(seikai)
         if result == 1:
             print("正解です。おめでとうございます！")
             break
+        print("-"*20)
+    ed = datetime.datetime.now()
+    print(f"TIME:{(ed - st).seconds}seconds")
 
 
 
@@ -41,10 +46,9 @@ def shutsudai():
 
 
 
-
 def kaitou(correct):
     ans_num_mis = input("欠損文字はいくつあるでしょうか？：")
-    if int(ans_num_mis) == num_mis:
+    if ans_num_mis == str(num_mis):
         print("正解です。それでは、具体的に欠損文字を１つずつ入力してください")
     else:
         print("不正解です。またチャレンジしてください")
@@ -56,7 +60,7 @@ def kaitou(correct):
             print("不正解ですまたチャレンジしてください。")
             return 0
         else:
-            del correct[answer]
+            correct.remove(answer.upper())
     
     return 1
 
