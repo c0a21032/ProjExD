@@ -4,6 +4,8 @@ def main():
     seikai = shutsudai()
     kaito(seikai)
 
+
+
 def shutsudai():
     qanda = {
             "サザエの旦那の名前は？":["マスオ", "ますお"],
@@ -18,12 +20,16 @@ def shutsudai():
 
     return qanda[mondai]
 
+
+
 def kaito(correct):
     kotae = input("答えるんだ：")
     if kotae in correct:
         print("正解！！！！")
     else:
         print("出直してこい")
+
+
 
 if __name__ == "__main__":
     main()
