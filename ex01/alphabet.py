@@ -20,6 +20,7 @@ def main():
 
 
 def shutsudai():
+    
     letters = []
     while(len(letters) < num_let):
         letter = chr(random.randint(65, 90))
