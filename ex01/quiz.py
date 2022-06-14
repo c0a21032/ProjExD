@@ -10,18 +10,18 @@ def shutsudai():
             "カツオの妹の名前は？":["ワカメ", "わかめ"],
             "タラオはカツオから見てどんな関係？":["甥", "おい", "甥っ子", "おいっこ"]
             }
-    quiz = list(qanda.keys())
-    question = quiz[random.randint(0, 2)]
+    questions = list(qanda.keys())
+    mondai = questions[random.randint(0, 2)]
 
     print("問題：")
-    print(question)
+    print(mondai)
 
-    return qanda[question]
+    return qanda[mondai]
 
 def kaito(correct):
-    answer = input("答えるんだ：")
-    if answer in correct:
-        print("正解！！！")
+    kotae = input("答えるんだ：")
+    if kotae in correct:
+        print("正解！！！！")
     else:
         print("出直してこい")
 
