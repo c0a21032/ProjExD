@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
     r, c = 4, 0
     for i in range(10):
-        button = tk.Button(root, width=5, height=2, text=i, font=("Times New Roman", 30))
+        button = tk.Button(root, width=5, height=2, text=i, font=("Times New Roman", 30), bg="lemon chiffon")
         button.bind("<1>", button_click)
         button.grid(row=r, column=c)
         c += 1
@@ -42,13 +42,16 @@ if __name__ == "__main__":
     
     enzan = {"たす":"+", "ひく":"-", "かける":"*", "わる":"/"}
     for i, num in enumerate(enzan.keys()):
-        button = tk.Button(root, width=5, height=2, text=num, font=("Times New Roman", 30))
+        button = tk.Button(root, width=5, height=2, text=num, font=("Times New Roman", 30), bg="azure")
         button.bind("<1>",button_click)
         button.grid(row=i+1, column=3)
 
-    for i, num in enumerate(["けす", "こたえ"]):
-        button = tk.Button(root, width=5, height=2, text=num, font=("Times New Roman", 30)) 
-        button.bind("<1>",button_click)
-        button.grid(row=4, column=i+1)
+    button = tk.Button(root, width=5, height=2, text="けす", font=("Times New Roman", 30), bg="red3", fg="white") 
+    button.bind("<1>",button_click)
+    button.grid(row=4, column=1)
+
+    button = tk.Button(root, width=5, height=2, text="こたえ", font=("Times New Roman", 30), bg="cyan3", fg="white") 
+    button.bind("<1>",button_click)
+    button.grid(row=4, column=2)
 
     root.mainloop()
