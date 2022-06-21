@@ -11,7 +11,10 @@ if __name__ == "__main__":
     root.title("計算機")
     root.geometry("300x500")
 
-    r = 0
+    entry = tk.Entry(root, justify="right", width=10, font=("Times New Roman", 40))
+    entry.grid(row=0, column = 0, columnspan=3)
+
+    r = 1
     for num in range(9, -1, -1):
         button = tk.Button(root, width=4, height=2, text=str(num), font=("Times New Roman", 30))
         button.bind("<1>", button_click)
