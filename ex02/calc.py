@@ -25,7 +25,6 @@ def button_click(event):
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("計算機")
-    #root.geometry("300x500")
 
     entry = tk.Entry(root, justify="right", width=10, font=("Times New Roman", 40))
     entry.grid(row=0, column = 0, columnspan=4)
