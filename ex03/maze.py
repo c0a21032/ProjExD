@@ -1,5 +1,3 @@
-import enum
-from itertools import count
 import tkinter as tk
 import tkinter.messagebox as tkm
 import maze_maker
