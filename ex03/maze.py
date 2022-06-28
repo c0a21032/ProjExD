@@ -1,5 +1,9 @@
 import tkinter as tk
 
+def key_down(event):
+    global key
+    key = event.keysym
+
 if __name__ == "__main__":
     root = tk.Tk()
     root.title("迷えるこうかとん")
@@ -11,5 +15,6 @@ if __name__ == "__main__":
     canvas.pack()
 
     key = ""
+    root.bind("<KeyPress>", key_down)
 
     root.mainloop()
