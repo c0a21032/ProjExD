@@ -10,18 +10,20 @@ def key_up(event):
     key = ""
 
 def main_proc():
-    global cx, cy
+    global cx, cy, mx, my
     if key == "Up":
-        cy -= 20
+        my -= 1
     elif key == "Down":
-        cy += 20
+        my += 1
     elif key == "Left":
-        cx -= 20
+        mx -= 1
     elif key == "Right":
-        cx += 20
+        mx += 1
+    cx = 50 + 100 * mx
+    cy = 50 + 100 * my
     canvas.coords("tori", cx, cy)
     canvas.pack()
-    root.after(10, main_proc)
+    root.after(100, main_proc)
 
 if __name__ == "__main__":
     root = tk.Tk()
@@ -33,7 +35,8 @@ if __name__ == "__main__":
     meiro = maze_maker.make_maze(15, 9)
     maze_maker.show_maze(canvas, meiro)
 
-    cx, cy = 300, 400
+    mx, my = 1, 1
+    cx, cy = 100 * mx, 100 * my
     tori = tk.PhotoImage(file="ex03/fig/2.png")
     canvas.create_image(cx, cy, image=tori, tag="tori")
     canvas.pack()
@@ -42,5 +45,5 @@ if __name__ == "__main__":
     root.bind("<KeyPress>", key_down)
     root.bind("<KeyRelease>", key_up)
 
-    root.after(0, main_proc)
+    main_proc()
     root.mainloop()
