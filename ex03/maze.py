@@ -11,13 +11,13 @@ def key_up(event):
 
 def main_proc():
     global cx, cy, mx, my
-    if key == "Up":
+    if key == "Up" and meiro[my-1][mx] == 0:
         my -= 1
-    elif key == "Down":
+    elif key == "Down" and meiro[my+1][mx] == 0:
         my += 1
-    elif key == "Left":
+    elif key == "Left" and meiro[my][mx-1] == 0:
         mx -= 1
-    elif key == "Right":
+    elif key == "Right" and meiro[my][mx+1] == 0:
         mx += 1
     cx = 50 + 100 * mx
     cy = 50 + 100 * my
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     maze_maker.show_maze(canvas, meiro)
 
     mx, my = 1, 1
-    cx, cy = 100 * mx, 100 * my
+    cx, cy = 50 + 100 * mx, 50 + 100 * my
     tori = tk.PhotoImage(file="ex03/fig/2.png")
     canvas.create_image(cx, cy, image=tori, tag="tori")
     canvas.pack()
