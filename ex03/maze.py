@@ -46,12 +46,6 @@ def enemy():
     canvas.pack()
     root.after(500, enemy)
 
-def dstar():
-    for s in stars:
-        canvas.create_image(50 + 100 * s[0], 50 + 100 * s[1], image=star)
-        canvas.pack()
-    root.after(100, dstar)
-
 def isclear():
     global stars
     if (mx, my) in stars:
@@ -71,12 +65,14 @@ if __name__ == "__main__":
     maze_maker.show_maze(canvas, meiro)
 
     stars = []
-    star = tk.PhotoImage(file="ex03/fig/5.png")
-    while len(stars) < 8:
+    star = tk.PhotoImage(file="ex03/fig/star.png")
+    while len(stars) < 9:
         sx = random.randint(0, 14)
         sy = random.randint(0, 8)
         if meiro[sy][sx] == 0 and (sx, sy) not in stars:
             stars.append((sx, sy))
+            canvas.create_image(50 + 100 * sx, 50 + 100 * sy, image=star)
+            canvas.pack()
 
     mx, my = 1, 1
     mcx, mcy = 50 + 100 * mx, 50 + 100 * my
@@ -102,5 +98,4 @@ if __name__ == "__main__":
     main_proc()
     enemy()
     isclear()
-    dstar()
     root.mainloop()
