@@ -1,17 +1,25 @@
 import pygame as pg
 import sys
+import random
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((1600, 900))
 
-    bg = pg.image.load("ex04/pg_bg.jpg")
+    bg = pg.image.load("ex04/fig/pg_bg.jpg")
     bg_rect = bg.get_rect()
-    
+
     tori_img = pg.image.load("ex04/fig/3.png")
     tori_img = pg.transform.rotozoom(tori_img, 0, 2.0)
     tori_rect = tori_img.get_rect()
     tori_rect.center = 900, 400
+
+    bomb = pg.Surface((20, 20))
+    bomb.set_colorkey((0, 0, 0))
+    pg.draw.circle(bomb, (255, 0, 0), (10, 10), 10)
+    bomb_rect = bomb.get_rect()
+    bomb_rect.center = random.randint(0, 1600), random.randint(0, 900)
+    vx = 1; vy = 1
 
     while True:
         screen.blit(bg, bg_rect)
@@ -34,6 +42,11 @@ def main():
             x += 1
             tori_rect.center = x, y
         screen.blit(tori_img, tori_rect)
+
+        x, y = bomb_rect.center
+        x += vx; y += vy
+        bomb_rect.center = x, y
+        screen.blit(bomb, bomb_rect)
 
         for event in pg.event.get():
             if event.type == pg.QUIT: return
