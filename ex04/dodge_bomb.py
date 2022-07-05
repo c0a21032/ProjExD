@@ -26,7 +26,7 @@ def main():
     pg.draw.circle(bombimg, (255, 0, 0), (10, 10), 10)
     bombrect = bombimg.get_rect()
     bombrect.center = random.randint(10, 1590), random.randint(10, 890)
-    vx = 1; vy = 1
+    vx, vy = 1, 1
 
     while True:
         screen.blit(bgimg, bgrect)
