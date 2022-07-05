@@ -4,10 +4,17 @@ import random
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
-    screen = pg.display.set_mode((1600, 900))
+    screen = pg.display.set_mode((1700, 900))
 
     bgimg = pg.image.load("ex04/fig/pg_bg.jpg")
     bgrect = bgimg.get_rect()
+
+    life = 900
+    lifebar = pg.Surface((100, 900))
+    liferect = lifebar.get_rect()
+    liferect.center = 1650, 450
+    rect = (0, 0, 100, life)
+    pg.draw.rect(lifebar, (0, 255, 0), rect)
 
     tori_img = pg.image.load("ex04/fig/3.png")
     tori_img = pg.transform.rotozoom(tori_img, 0, 2.0)
@@ -23,6 +30,7 @@ def main():
 
     while True:
         screen.blit(bgimg, bgrect)
+        screen.blit(lifebar, liferect)
 
         key_dic = pg.key.get_pressed()
         if key_dic[pg.K_UP]:
@@ -57,6 +65,9 @@ def main():
         screen.blit(bombimg, bombrect)
 
         if tori_rect.colliderect(bombrect):
+            life -= 5
+
+        if life == 0:
             return
 
         for event in pg.event.get():
@@ -65,7 +76,11 @@ def main():
         pg.display.update()
 
         clock = pg.time.Clock()
-        clock.tick(1000)
+        if key_dic[pg.K_SPACE]: #SPACEを押すと時間が四分の一になる
+            clock.tick(250)
+            life -= 1  
+        else:
+            clock.tick(1000)
 
 if __name__ == "__main__":
     pg.init()
