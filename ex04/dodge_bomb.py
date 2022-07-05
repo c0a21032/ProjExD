@@ -9,7 +9,7 @@ def main():
     bgimg = pg.image.load("ex04/fig/pg_bg.jpg")
     bgrect = bgimg.get_rect()
 
-    life = 900
+    life = 900      #ライフの追加
     lifebar = pg.Surface((100, 900))
     liferect = lifebar.get_rect()
     liferect.center = 1650, 450
@@ -65,7 +65,7 @@ def main():
         screen.blit(bombimg, bombrect)
 
         if tori_rect.colliderect(bombrect):
-            life -= 5
+            life -= 5   #bombに当たるとlifeが減少
 
         if life == 0:
             return
@@ -78,7 +78,7 @@ def main():
         clock = pg.time.Clock()
         if key_dic[pg.K_SPACE]: #SPACEを押すと時間が四分の一になる
             clock.tick(250)
-            life -= 1  
+            life -= 1       #lifeを犠牲にする
         else:
             clock.tick(1000)
 
