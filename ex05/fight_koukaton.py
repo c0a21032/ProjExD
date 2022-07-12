@@ -93,7 +93,7 @@ class Enemy:
 
 def main():
     clock = pg.time.Clock()
-    scr = Screen("逃げろ！こうかとん", (1600, 900), "ex05/fig/pg_bg.jpg")
+    scr = Screen("負けるな！こうかとん", (1600, 900), "ex05/fig/pg_bg.jpg")
     kkt = Bird("ex05/fig/6.png", 2.0, (random.randint(100, 700), random.randint(100, 800)))
     teki = Enemy("ex05/fig/6.png", 4.0, (random.randint(900, 1500), random.randint(100, 800)))
     bkd1 = Bomb((255, 0, 0), 10, (random.choice([-4, 4]), random.choice([-4, 4])), scr)
