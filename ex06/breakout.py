@@ -7,7 +7,7 @@ class Paddle:
     def __init__(self, color, size):
         self.sfc = pg.Surface(size)
         self.rct = self.sfc.get_rect()
-        self.rct.center = (300, 500)
+        self.rct.center = (300, 550)
         self.sfc.fill(color)
     
     def update(self, key):
@@ -30,7 +30,7 @@ class Ball:
         self.rct.center = (300, 400)
         self.vx, self.vy = velocity
     
-    def update(self, scr, pad, bri):
+    def update(self, scr, pad, bri, key):
         self.rct.move_ip(self.vx, self.vy)
         if self.rct.left < scr.left or scr.right  < self.rct.right :
             self.vx *= -1
@@ -43,6 +43,11 @@ class Ball:
             hori, vert = check_bound(self.rct, i.rct)
             self.vx *= hori
             self.vy *= vert
+        if check_bound(self.rct, pad) != (1, 1):
+            if key[pg.K_RIGHT]:
+                self.vx += 1
+            if key[pg.K_LEFT]:
+                self.vx -= 1
 
 
 class Brick:
@@ -85,7 +90,7 @@ def main():
         key = pg.key.get_pressed()
         bar.update(key)
         screen.blit(bar.sfc, bar.rct)
-        sphere.update(screen_rect, bar.rct, bricks)
+        sphere.update(screen_rect, bar.rct, bricks, key)
         screen.blit(sphere.sfc, sphere.rct)
         for i in bricks:
             if sphere.rct.colliderect(i.rct):
