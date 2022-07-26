@@ -12,13 +12,13 @@ class Paddle:
     
     def update(self, key):
         if key[pg.K_RIGHT]:
-            self.rct.centerx += 2
+            self.rct.centerx += 4
         if key[pg.K_LEFT]:
-            self.rct.centerx -= 2
+            self.rct.centerx -= 4
         if self.rct.right > 600:
-            self.rct.centerx -= 2
+            self.rct.centerx -= 4
         if self.rct.left < 0:
-            self.rct.centerx += 2
+            self.rct.centerx += 4
 
 
 class Ball:
@@ -82,7 +82,7 @@ def main():
     screen = pg.display.set_mode((600, 600))
     screen_rect = screen.get_rect()
     bar = Paddle((255, 255, 255), (100, 10))
-    sphere = Ball((255, 0, 0), 10, (random.choice([-1, 1]), -1))
+    sphere = Ball((255, 0, 0), 10, (random.randint(-2, 2), -2))
     bricks = make_bricks(100, 50, 4, 5)
     clock = pg.time.Clock()
     while True:
@@ -97,7 +97,7 @@ def main():
                 bricks.remove(i)
             screen.blit(i.sfc, i.rct)
         pg.display.update()
-        clock.tick(200)
+        clock.tick(100)
         for event in pg.event.get():
                 if event.type == pg.QUIT: return
         if len(bricks) <= 0 or sphere.rct.bottom > 600:
